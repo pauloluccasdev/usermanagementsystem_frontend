@@ -6,11 +6,13 @@
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" />
+        <mat-error>Name is required</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
+        <mat-error>Email is required</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -23,10 +25,11 @@
             {{ department.name }}
           </mat-option>
         </mat-select>
+        <mat-error>Department is required</mat-error>
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary" type="submit">Save</button>
+    <button mat-raised-button color="primary" type="submit">{{ userId ? 'Update' : 'Create' }}</button>
     <button mat-button routerLink="/users">Cancel</button>
   </form>
 </div>

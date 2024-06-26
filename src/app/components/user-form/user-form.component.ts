@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from '../../models/department';
 import { UserService } from '../../service/user.service';
 import { DepartmentService } from '../../service/department.service';
+import { User, UserResponse } from '../../models/user';
 
 @Component({
   selector: 'app-user-form',
@@ -25,9 +26,9 @@ export class UserFormComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.userForm = this.fb.group({
-      name: [''],
-      email: [''],
-      departmentId: ['']
+      name: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      departmentId: ['', Validators.required]
     });
   }
 
@@ -38,7 +39,7 @@ export class UserFormComponent implements OnInit {
 
     this.userId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.userId) {
-      this.userService.getUser(this.userId).subscribe(user => {
+      this.userService.getUser(this.userId).subscribe((user: UserResponse) => {
         this.userForm.patchValue(user);
       });
     }
@@ -46,18 +47,32 @@ export class UserFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.userId) {
-      this.userService.updateUser(this.userId, this.userForm.value).subscribe(() => {
-        this.snackBar.open('User updated successfully', 'Close', {
-          duration: 3000,
-        });
-        this.router.navigate(['/users']);
+      this.userService.updateUser(this.userId, this.userForm.value).subscribe({
+        next:() => {
+          this.snackBar.open('User updated successfully', 'Close', {
+            duration: 3000,
+          });
+          this.router.navigate(['/users']);
+        },
+        error:() => {
+          this.snackBar.open('Error updating user.', 'Close', {
+            duration: 3000,
+          });
+        },
       });
     } else {
-      this.userService.createUser(this.userForm.value).subscribe(() => {
-        this.snackBar.open('User created successfully', 'Close', {
-          duration: 3000,
-        });
-        this.router.navigate(['/users']);
+      this.userService.createUser(this.userForm.value).subscribe({
+        next:() => {
+          this.snackBar.open('User created successfully', 'Close', {
+            duration: 3000,
+          });
+          this.router.navigate(['/users']);
+        },
+        error:() => {
+          this.snackBar.open('Error creating user.', 'Close', {
+            duration: 3000,
+          });
+        },
       });
     }
   }

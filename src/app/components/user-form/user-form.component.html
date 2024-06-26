@@ -1,24 +1,32 @@
-<h2>{{ userId ? 'Edit User' : 'Add User' }}</h2>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput formControlName="name">
-  </mat-form-field>
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <h2>{{ userId ? "Edit User" : "Add User" }}</h2>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email">
-  </mat-form-field>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Department</mat-label>
-    <mat-select formControlName="departmentId">
-      <mat-option *ngFor="let department of departments" [value]="department.id">
-        {{ department.name }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Save</button>
-  <button mat-button routerLink="/users">Cancel</button>
-</form>
+      <mat-form-field appearance="fill">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="departmentId">
+          <mat-option
+            *ngFor="let department of departments"
+            [value]="department.id"
+          >
+            {{ department.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <button mat-button routerLink="/users">Cancel</button>
+  </form>
+</div>

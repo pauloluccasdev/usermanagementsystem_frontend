@@ -22,13 +22,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 // Componentes
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     MatFormFieldModule,
     MatCardModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],

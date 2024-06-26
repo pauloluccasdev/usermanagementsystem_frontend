@@ -4,3 +4,9 @@ export interface User {
   email: string;
   departmentId: number;
 }
+
+export interface UserResponse {
+  name: string;
+  email: string;
+  departmentName: string;
+}

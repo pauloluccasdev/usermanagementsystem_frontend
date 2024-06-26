@@ -24,6 +24,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DepartmentListComponent } from './components/department-list/department-list.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     UserListComponent,
     UserFormComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    DepartmentListComponent
   ],
   imports: [
     BrowserModule,

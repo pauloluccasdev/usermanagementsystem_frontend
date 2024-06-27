@@ -12,7 +12,7 @@
         <button mat-icon-button [routerLink]="['/departments-form', department.id]">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="deleteDepartment(department.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>

@@ -35,8 +35,7 @@ export class DepartmentListComponent implements OnInit {
         });
         this.loadDepartments();
       },
-      error:(err) => {
-        console.error(err);
+      error:() => {
         this.snackBar.open('Error deleting department.', 'Close', {
           duration: 3000,
         });

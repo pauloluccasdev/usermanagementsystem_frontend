@@ -9,7 +9,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
       <mat-cell *matCellDef="let department">
-        <button mat-icon-button [routerLink]="['/department-form', department.id]">
+        <button mat-icon-button [routerLink]="['/departments-form', department.id]">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button>
@@ -21,7 +21,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-  <button class="button-personalized" mat-raised-button color="primary" routerLink="/department-form">Add Department</button>
+  <button class="button-personalized" mat-raised-button color="primary" routerLink="/departments-form">Add Department</button>
 </div>
 
 

@@ -1,0 +1,35 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <h2>{{ userId ? "Edit User" : "Add User" }}</h2>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error>Name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error>Email is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="departmentId">
+          <mat-option
+            *ngFor="let department of departments"
+            [value]="department.id"
+          >
+            {{ department.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error>Department is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">{{ userId ? 'Update' : 'Create' }}</button>
+    <button mat-button routerLink="/users">Cancel</button>
+  </form>
+</div>

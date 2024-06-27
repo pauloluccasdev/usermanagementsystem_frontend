@@ -1,0 +1,16 @@
+<div class="container">
+  <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+    <h2>{{ departmentId ? "Edit Department" : "Add Department" }}</h2>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error>Name is required</mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">{{ departmentId ? 'Update' : 'Create' }}</button>
+    <button mat-button routerLink="/departments">Cancel</button>
+  </form>
+</div>
